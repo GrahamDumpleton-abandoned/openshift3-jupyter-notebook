@@ -6,7 +6,7 @@ JUPYTER_NOTEBOOK_CONFIG=$WARPDRIVE_APP_ROOT/tmp/jupyter_notebook_config.py
 
 touch $JUPYTER_NOTEBOOK_CONFIG
 
-cat >> JUPYTER_NOTEBOOK_CONFIG << !
+cat >> $JUPYTER_NOTEBOOK_CONFIG << !
 import os
 
 password = os.environ.get('JUPYTER_USER_PASSWORD')
