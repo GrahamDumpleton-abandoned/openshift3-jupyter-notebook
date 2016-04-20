@@ -1,0 +1,16 @@
+#!/bin/bash
+
+if [ x"$WARPDRIVE_DEBUG" != x"" ]; then
+    set -x
+fi
+
+set -eo pipefail
+
+# Remove our 'requirements.txt' file and '.warpdrive' directory so can
+# use resulting image as subsequent S2I base image. We need to leave the
+# 'app.sh' file in place as that it what will start up Jupyter Notebook.
+
+if [ "$WARPDRIVE_BUILD_SYSTEM" = "docker" ]; then
+    rm -f $WARPDRIVE_SRC_ROOT/requirements.txt
+    rm -rf $WARPDRIVE_SRC_ROOT/.warpdrive
+fi
